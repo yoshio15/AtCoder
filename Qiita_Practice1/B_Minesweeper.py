@@ -13,12 +13,12 @@ for i in range(H):
             # set number of bom surrounded
             bom_cnt = 0
             for m in range(3):
-                if (i == 0 and m == 0) or (i+1 == H and m == 2):
+                if (i == 0 and m == 0) or (i + 1 == H and m == 2):
                     continue
                 for n in range(3):
-                    if (k == 0 and n == 0) or (k+1 == W and n == 2) or (m == 1 and n == 1):
+                    if (k == 0 and n == 0) or (k + 1 == W and n == 2) or (m == 1 and n == 1):
                         continue
-                    if S[i-1+m][k-1+n] == bom:
+                    if S[i - 1 + m][k - 1 + n] == bom:
                         bom_cnt += 1
                 S[i][k] = bom_cnt
 
