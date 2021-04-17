@@ -6,8 +6,7 @@ N = int(input())
 xy = [list(map(int, input().split())) for l in range(N)]
 
 dis_list = [0] * math.factorial(N)
-i = 0
-for p_tuple in itertools.permutations(xy):
+for i, p_tuple in enumerate(itertools.permutations(xy)):
     dis = 0
     for k in range(len(p_tuple) - 1):
         x1 = p_tuple[k][0]
@@ -17,6 +16,5 @@ for p_tuple in itertools.permutations(xy):
         dis += ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
 
     dis_list[i] = dis
-    i += 1
 
 print(statistics.mean(dis_list))
