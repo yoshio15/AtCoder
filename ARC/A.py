@@ -1,4 +1,3 @@
-# 分からん
 A, B = map(int, input().split())
 
 A_list = [0] * A
@@ -15,9 +14,8 @@ if A >= B:
             B_list[i] = - (sum_num + sum(B_list))
         else:
             B_list[i] = - (i + 1)
-    ans = A_list + B_list
 
-else:
+if A < B:
     for i in range(B):
         sum_num += -(i + 1)
         B_list[i] = -(i + 1)
@@ -26,6 +24,7 @@ else:
             A_list[i] = - (sum_num - sum(A_list))
         else:
             A_list[i] = i + 1
-    ans = A_list + B_list
 
-print(ans)
+ans = A_list + B_list
+ans_str = " ".join([str(el) for el in ans])
+print(ans_str)
