@@ -51,9 +51,22 @@ def fib_mem2(n):
         return fib_mem2(n - 1) + fib_mem2(n - 2)
 
 
+# (4)ボトムアップVer
+def fib_bottom_up(n):
+    global cnt
+    cnt += 1
+    ret = {0: 0, 1: 1}
+    for k in range(2, n + 1):
+        print(k)
+        ret[k] = ret[k - 1] + ret[k - 2]
+    print(ret)
+    return ret[n]
+
+
 i = 100
 # ans = fib_rec(i)
 # ans = fib_mem(i)
-ans = fib_mem2(i)
+# ans = fib_mem2(i)
+ans = fib_bottom_up(i)
 print("i={}, answer={}".format(i, ans))
 print(cnt)
