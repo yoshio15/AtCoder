@@ -1,28 +1,28 @@
-import itertools
-
 n, l = map(int, input().split())
 k = int(input())
 a = list(map(int, (input().split())))
 
-sep = [i for i in range(n)]
-il = [i for i in range(k)]
+li = 0
+ri = 10 ** 9
 
-ans = 0
-for el in itertools.combinations(sep, k):
-    len_l = []
-    for i in il:
-        len_l.append(a[el[i]])
-    # print(len_l)
-    p_len_l = []
-    for i in range(len(len_l)):
-        if i == len(len_l) - 1:
-            p_len_l.append(l - len_l[i])
-        if i == 0:
-            p_len_l.append(len_l[i])
-        else:
-            p_len_l.append(len_l[i] - len_l[i - 1])
-    # print(p_len_l)
-    if min(p_len_l) > ans:
-        ans = min(p_len_l)
 
-print(ans)
+def check(i):
+    sp_cnt = 0
+    pre = 0
+    for j in range(n):
+        if a[j] - pre >= i and l - a[j] >= i:
+            sp_cnt += 1
+            pre = a[j]
+        if sp_cnt >= k:
+            return True
+    return False
+
+
+while ri - li > 1:
+    mi = (ri + li) // 2
+    if check(mi):
+        li = mi
+    else:
+        ri = mi
+
+print(li)
